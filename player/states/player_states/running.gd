@@ -8,8 +8,10 @@ func physics_update(_delta: float) -> void:
 
 	if input_direction.x > 0:
 		player.animated_sprite.flip_h = false
+		player.attack_range.rotation_degrees = 0
 	elif input_direction.x < 0:
 		player.animated_sprite.flip_h = true
+		player.attack_range.rotation_degrees = -180
 
 	player.velocity = input_direction * player.speed
 	player.move_and_slide()

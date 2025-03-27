@@ -11,7 +11,6 @@
 size = Vector2(24, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g6k8r"]
-size = Vector2(27.7813, 26)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_rkbax")
@@ -36,22 +35,13 @@ script = ExtResource("5_boad6")
 [node name="Attacking" type="Node" parent="StateMachine"]
 script = ExtResource("6_rgyib")
 
-[node name="AttackRange" type="Node2D" parent="."]
+[node name="AttackRange" type="Area2D" parent="."]
 
-[node name="Right" type="Area2D" parent="AttackRange"]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange/Right"]
-position = Vector2(14, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+position = Vector2(10, 0)
 shape = SubResource("RectangleShape2D_g6k8r")
 disabled = true
-debug_color = Color(3.85046e-06, 0.586719, 0.770682, 0.42)
 
-[node name="Left" type="Area2D" parent="AttackRange"]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange/Left"]
-position = Vector2(-14, 0)
-shape = SubResource("RectangleShape2D_g6k8r")
-disabled = true
-debug_color = Color(3.85046e-06, 0.586719, 0.770682, 0.42)
+[node name="AttackTimer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
