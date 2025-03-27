@@ -1,17 +1,57 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0xcauorfoxiq"]
+[gd_scene load_steps=9 format=3 uid="uid://d0xcauorfoxiq"]
 
 [ext_resource type="Texture2D" uid="uid://cixnqhcd8klc6" path="res://icon.svg" id="1_oul6g"]
-[ext_resource type="Script" uid="uid://bx8payi00ddl7" path="res://player/player.gd" id="1_rkbax"]
+[ext_resource type="Script" uid="uid://cqb6fmo3thrsv" path="res://player/player.gd" id="1_rkbax"]
+[ext_resource type="Script" uid="uid://dnyuml4t3vtsi" path="res://player/states/state_machine.gd" id="3_g1dw6"]
+[ext_resource type="Script" uid="uid://ctisyhoohwajl" path="res://player/states/player_states/idle.gd" id="4_g6k8r"]
+[ext_resource type="Script" uid="uid://cjb5ivfwk13tv" path="res://player/states/player_states/running.gd" id="5_boad6"]
+[ext_resource type="Script" uid="uid://gq1eqhsmpks8" path="res://player/states/player_states/attacking.gd" id="6_rgyib"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkbax"]
-size = Vector2(16, 16)
+size = Vector2(24, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6k8r"]
+size = Vector2(27.7813, 26)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_rkbax")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_rkbax")
+debug_color = Color(4.09111e-06, 0.650536, 0.086091, 0.42)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.125, 0.125)
+scale = Vector2(0.1875, 0.1875)
 texture = ExtResource("1_oul6g")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_g1dw6")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_g6k8r")
+
+[node name="Running" type="Node" parent="StateMachine"]
+script = ExtResource("5_boad6")
+
+[node name="Attacking" type="Node" parent="StateMachine"]
+script = ExtResource("6_rgyib")
+
+[node name="AttackRange" type="Node2D" parent="."]
+
+[node name="Right" type="Area2D" parent="AttackRange"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange/Right"]
+position = Vector2(14, 0)
+shape = SubResource("RectangleShape2D_g6k8r")
+disabled = true
+debug_color = Color(3.85046e-06, 0.586719, 0.770682, 0.42)
+
+[node name="Left" type="Area2D" parent="AttackRange"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange/Left"]
+position = Vector2(-14, 0)
+shape = SubResource("RectangleShape2D_g6k8r")
+disabled = true
+debug_color = Color(3.85046e-06, 0.586719, 0.770682, 0.42)

@@ -1,5 +1,6 @@
 {
   "[gdscript]": {
     "editor.defaultFormatter": "geequlim.godot-tools"
-  }
+  },
+  "editor.insertSpaces": false
 }
