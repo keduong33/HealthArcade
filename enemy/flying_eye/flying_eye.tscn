@@ -71,6 +71,8 @@ animations = [{
 }]
 
 [node name="FlyingEye" instance=ExtResource("1_2vds0")]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("2_x68lg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
@@ -81,4 +83,4 @@ position = Vector2(-1.90735e-06, -1.90735e-06)
 scale = Vector2(0.623333, 0.623333)
 sprite_frames = SubResource("SpriteFrames_rn73k")
 animation = &"flight"
-frame_progress = 0.030768
+frame_progress = 0.378683
