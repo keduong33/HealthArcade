@@ -1,7 +1,7 @@
 class_name Player extends CharacterBody2D
 
 @export var speed: float = 500.0
-@export var attackSpeed: float = 0.3
+@export var attack_speed: float = 0.3
 @export var health: int = 100
 
 
@@ -25,7 +25,7 @@ enum HealthState {
 var current_health_state: HealthState = HealthState.HEALTHY
 
 func _ready():
-	attack_timer.wait_time = attackSpeed
+	attack_timer.wait_time = attack_speed
 
 # Testing purpose
 func _physics_process(_delta: float) -> void:

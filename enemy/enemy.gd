@@ -1,19 +1,19 @@
 class_name Enemy extends CharacterBody2D
 
 @export var speed: float = 100.0
-@export var attackSpeed: float = 0.3
+@export var attack_speed: float = 0.3
 
 @onready
 var player: Player = get_parent().get_node("Player")
 
 var sprite: AnimatedSprite2D
 
-var knockback: Vector2 = Vector2.ZERO
+var knock_back: Vector2 = Vector2.ZERO
 
 @export
-var knockBackRecovery: float = 20;
+var knock_back_recovery: float = 20;
 @export
-var knockBackSpeed: float = 300;
+var knock_back_speed: float = 300;
 
 func _ready():
 	pass
@@ -21,11 +21,11 @@ func _ready():
 func _physics_process(_delta: float) -> void:
 	var direction = position.direction_to(player.position)
 	sprite.flip_h = direction.x < 0
-	velocity = direction * speed + knockback
+	velocity = direction * speed + knock_back
 
 	var collision = move_and_slide()
 
 	if collision:
-		knockback = - position.direction_to(player.position) * knockBackSpeed
+		knock_back = - position.direction_to(player.position) * knock_back_speed
 
-	knockback = knockback.move_toward(Vector2.ZERO, knockBackRecovery)
+	knock_back = knock_back.move_toward(Vector2.ZERO, knock_back_recovery)
