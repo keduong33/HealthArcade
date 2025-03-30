@@ -6,14 +6,16 @@
 [ext_resource type="Script" uid="uid://ctisyhoohwajl" path="res://player/states/player_states/idle.gd" id="4_g6k8r"]
 [ext_resource type="Script" uid="uid://cjb5ivfwk13tv" path="res://player/states/player_states/running.gd" id="5_boad6"]
 [ext_resource type="Script" uid="uid://gq1eqhsmpks8" path="res://player/states/player_states/attacking.gd" id="6_rgyib"]
+[ext_resource type="PackedScene" uid="uid://itg8o7rwe4dn" path="res://weapon/sword/sword.tscn" id="7_boad6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkbax"]
 size = Vector2(24, 24)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6k8r"]
-
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_rkbax")
+speed = null
+attackSpeed = null
+health = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_rkbax")
@@ -35,13 +37,8 @@ script = ExtResource("5_boad6")
 [node name="Attacking" type="Node" parent="StateMachine"]
 script = ExtResource("6_rgyib")
 
-[node name="AttackRange" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
-position = Vector2(10, 0)
-shape = SubResource("RectangleShape2D_g6k8r")
-disabled = true
-
 [node name="AttackTimer" type="Timer" parent="."]
 process_callback = 0
 one_shot = true
+
+[node name="Sword" parent="." instance=ExtResource("7_boad6")]

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b7tx6jcj82g6x"]
+
+[node name="Weapon" type="Area2D"]
+
+[node name="HealthyAttackRange" type="CollisionShape2D" parent="."]
+light_mask = 2
+visibility_layer = 4
+disabled = true
+debug_color = Color(8.66354e-07, 0.644092, 0.287683, 0.42)
+
+[node name="InjuredAttackRange" type="CollisionShape2D" parent="."]
+disabled = true
+debug_color = Color(0.792889, 0.426245, 0.037665, 0.42)
+
+[node name="CriticalAttackRange" type="CollisionShape2D" parent="."]
+disabled = true
+debug_color = Color(0.925165, 0, 0.229722, 0.42)

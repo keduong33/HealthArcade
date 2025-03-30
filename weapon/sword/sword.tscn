@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://itg8o7rwe4dn"]
+
+[ext_resource type="PackedScene" uid="uid://b7tx6jcj82g6x" path="res://weapon/weapon.tscn" id="1_g0263"]
+[ext_resource type="Script" uid="uid://t4dm4idvhry6" path="res://weapon/sword/sword.gd" id="2_dvccu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g0263"]
+size = Vector2(56, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dvccu"]
+size = Vector2(40, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k1vqw"]
+size = Vector2(24, 16)
+
+[node name="Sword" instance=ExtResource("1_g0263")]
+script = ExtResource("2_dvccu")
+
+[node name="HealthyAttackRange" parent="." index="0"]
+position = Vector2(28, 0)
+shape = SubResource("RectangleShape2D_g0263")
+
+[node name="InjuredAttackRange" parent="." index="1"]
+position = Vector2(20, 0)
+shape = SubResource("RectangleShape2D_dvccu")
+
+[node name="CriticalAttackRange" parent="." index="2"]
+position = Vector2(12, 0)
+shape = SubResource("RectangleShape2D_k1vqw")
